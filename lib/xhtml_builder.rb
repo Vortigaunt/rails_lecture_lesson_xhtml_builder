@@ -78,8 +78,23 @@ class XHTMLBuilder
 		@content << "<title>\n" << string << "\n</title>\n"
 	end
 	
+	def method_missing (m_name, *args, &block)
+	
+		@content << "<h2>\n" ;
+		
+		if args[0] 
+			@content << args[0] << "\n"
+			
+		else
+			yield
+			
+		end
+			
+		@content << "</h2>\n"
+	end
 end
 
+=begin
 def missing_method(object)
 	begin
 		yield
@@ -87,3 +102,4 @@ def missing_method(object)
 		object.h2
 	end
 end
+=end
